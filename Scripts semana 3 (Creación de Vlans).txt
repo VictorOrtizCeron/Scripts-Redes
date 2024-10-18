@@ -1,0 +1,37 @@
+Scripts semana 3 y 4 (Creación de VLANs)
+
+El punto de las VLANs es segmentar un LAN en varias redes.
+
+A nivel de switch
+
+enable
+conf t
+vlan ? *para obtener identificadores*
+vlan [identificador]
+name [nombre]
+exi
+interface range [rango en formato fa0/(puerto inicial - puerto final)]
+switchport mode access (que permita acceso a los puertos)
+switchport access vlan [identificador de vlan]
+exi
+
+do show vlan (muestra configuracion)
+
+configuración DHCP para vlan
+
+ip dhcp excluded-address [Rango de direcciones fuera del dhcp]
+ip dhcp pool [nombre dhcp]
+net [default gateway][subnet mask]
+default-router [primera ip utilizable]
+dns-server [ip del dns server termido en 5]
+exit
+
+Asignación de ip para la vlan
+
+interface vlan [identificador vlan]
+ip address [ip reservada por dhcp][subnet mask]
+exit
+
+
+
+

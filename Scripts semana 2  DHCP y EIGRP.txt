@@ -1,0 +1,54 @@
+Scripts Redes
+
+Semana 1 (Uso de DHCP o asignación de IPs dinámicas)
+
+Setup inicial
+enable
+conf t
+int [gi0/0]
+ip add [primera IP utilizable][Respectiva máscara]
+desc [Descripción]
+no shutdown
+hostname [nombre hostname]
+banner motd &[mensaje]&
+line console 0
+pass [contraseña]
+login 
+exit 
+enable secret [contraseña]
+line vty 0 4 
+pass [contraseña] 
+exit
+service password-encryption
+do wr
+
+Asignación DHCP: 
+
+en
+conf t 
+ip dhcp ex
+ip dhcp excluded-address [ip address inicial][ip addres final de rango]
+ip dhcp pool [nombre de adonde esta apuntando el DHCP]
+network [default gateway][subnet-mask]
+default-router [ip del enlace]
+dns-server [ip cualquiera que termine con 5 por facilidad]
+(actualizar equipos)
+ex
+do wr
+
+(config) do show run (mostrar todas las configs actuales.)
+
+EIGRP EN ROUTERS INTERCONECTADOS
+en
+conf t
+router eigrp [identificador (numero)]
+router eigrp ?
+network [default gateway][mascara invertida o  255.255.255.255-mascara]
+(Esto se repite para todos los gateways a los que va la red)
+no auto-summary 
+ex
+
+
+
+
+
