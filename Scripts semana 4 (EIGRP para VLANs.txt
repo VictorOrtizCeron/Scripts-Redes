@@ -19,7 +19,8 @@ Protocolo EIGRP
 
 router eigrp ?
 router eigrp [id eigrp]
-net [default gateway de la red del router][mascara invertida]
+net [ip de la red (la que tiene 0) conectada al ROUTER][mascara invertida]
+(esto se hace para todas las redes adyacentes)
 no auto-summary
 ex
 
@@ -40,3 +41,4 @@ en
 copy running-config TFTP
 se agrega el IP del TFTP 
 se agrega un nombre significativo
+ 

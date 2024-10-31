@@ -17,21 +17,37 @@ exi
 
 do show vlan (muestra configuracion)
 
-configuración DHCP para vlan
+configuración DHCP DENTRO DE UNA VLAN
 
 ip dhcp excluded-address [Rango de direcciones fuera del dhcp]
+(generalmente las primeras 10 direcciones se reservan)
 ip dhcp pool [nombre dhcp]
-net [default gateway][subnet mask]
+net [red con 0][subnet mask]
 default-router [primera ip utilizable]
-dns-server [ip del dns server termido en 5]
+dns-server [ip del dns server terminado en 5]
 exit
 
 Asignación de ip para la vlan
 
 interface vlan [identificador vlan]
-ip address [ip reservada por dhcp][subnet mask]
+ip address [ip reservada por dhcp primera ip utilizable][subnet mask]
 exit
 
+EN ROUTER PADRE DE LA VLAN (Interconexión de VLANS)
+en 
+conf t
+interface gi[puerto de conexión con switch]
+no ip add
+no sh
+int gi[puerto de conexión a VLAN].[idd de la vlan]
+encapsulation dot1Q [id vlan]
+ip add [primera ip utilizable][mask]
+ex
 
+EN switch
 
+ena
+conf t
+int fa[puerto donde esta conectado el router]
+switchport mode trunk
 
