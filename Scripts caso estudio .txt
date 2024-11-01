@@ -1,0 +1,49 @@
+DHCP y VLAN A NIVEL DE SWITCH:
+
+VLAN [id vlan]
+NAME [nombre]
+ex
+INT range fa0/[rango de puertos]
+SW MOD ACC
+SW ACC VLAN [id vlan]
+Ex
+int fa0/[puerto que va a router]
+SW MOD TRUN
+
+IP DHCP Excluded-address [rango de ips]
+DHCP POOl [nombre dhcp]
+NET [red (la que va con 0)][mascara]
+Default-Router[Default gateway (la que va con 1)]
+DNS-server [ip del dns]
+ex
+INT VLAN [id vlan]
+ip add [primera ip utilizable + 1 (con 2 )][masscara]
+
+
+Setup de VLAN a NIVEL DE ROUTER
+
+ena
+conf t
+int [puerto conectado a switch]
+no ip add
+no shutdown
+ex
+int [puerto conectado a switch].[id vlan]
+encapsulation dot1Q [id vlan]
+ip add [default gateway ][mascara]
+exi
+
+int [puerto serial WAN]
+ip add [ip de router wan][mascara]
+clock rate 2000000
+no sh
+
+ex
+Router eigrp [id eigrp]
+net [red a agregar][wildcard mask]
+no auto-summary
+ex
+do wr
+
+
+

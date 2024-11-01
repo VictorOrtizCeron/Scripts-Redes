@@ -24,6 +24,8 @@ do wr
 
 Asignación DHCP: 
 
+A nivel de router
+
 en
 conf t 
 ip dhcp ex
@@ -48,6 +50,17 @@ network [red (la que va con cero)][mascara invertida o  255.255.255.255-mascara]
 no auto-summary 
 ex
 
+DHCP y VLAN A NIVEL DE SWITCH:
+
+(Se puede hacer despues de configurar la VLAN)
+
+
+
+IP DHCP Excluded-address [rango de ips]
+DHCP POOl [nombre dhcp]
+Default-Router[Default gateway (la que va con 1)]
+DNS-server [ip del dns]
+ex
 
 
 

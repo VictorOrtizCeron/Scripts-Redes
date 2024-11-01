@@ -2,7 +2,7 @@ Scripts semana 4 (EIGRP para VLANs y DNS SERVER)
 
 Todos los routers y vlans deben estar configuradas correctamente
 
-a nivel de router en inteface con otro router
+a nivel de router en interface con otro router
 
 ena
 conf t
@@ -20,7 +20,7 @@ Protocolo EIGRP
 router eigrp ?
 router eigrp [id eigrp]
 net [ip de la red (la que tiene 0) conectada al ROUTER][mascara invertida]
-(esto se hace para todas las redes adyacentes)
+(esto se hace para todas las redes adyacentes, las VLANS se agregan tambien individualmente)
 no auto-summary
 ex
 
@@ -28,11 +28,13 @@ Nota: Todas las redes se pueden agregar de una al protocolo eigrp sin necesidad 
 levantar las interfaces primero. Esto se hace en todos los routers OJO y solo con
 las redes ADYACENTES.
 
-SERVIDORES
+SERVIDORES DNS
 
 Para los servidores se dejan las direcciones estáticas apartadas en dhcp
 
-Los servidores DNS se utilizan para redirigir paquetes a otros servicios como paginas
+Los servidores DNS se utilizan para redirigir paquetes a otros servicios por dirección de IP
+
+se utilizan las IPS reservadas
 
 TFTP es una especie de backup
 
@@ -40,5 +42,9 @@ Para el TFTP a nivel de router
 en 
 copy running-config TFTP
 se agrega el IP del TFTP 
-se agrega un nombre significativo
+se agrega un nombre significativo  
+
+SERVIDOR DHCP
+
+Se puede setear con una IP estática
  
